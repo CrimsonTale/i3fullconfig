@@ -127,8 +127,8 @@ bar {
 
         # colour of border, background, and text
         focused_workspace       #d8dee8 #00ff2a #1A2026
-        active_workspace        #d8dee8 #1A2026 #1A2026
-        inactive_workspace      #d8dee8 #1A2026 #1A2026
+        active_workspace        #d8dee8 #00ff2a #1A2026
+        inactive_workspace      #d8dee8 #d8dee8 #1A2026
         urgent_workspacei       #d8dee8 #1A2026 #2f343f
     }
         status_command i3status
@@ -140,12 +140,12 @@ for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 
 # colour of border, background, text, indicator, and child_border
-client.focused              #00ff2a #d8dee8 #1A2026 #00ff2a #1A2026
-client.focused_inactive     #d8dee8 #d8dee8 #1A2026 #d8dee8 #d8dee8
-client.unfocused            #d8dee8 #d8dee8 #1A2026 #d8dee8 #d8dee8
-client.urgent               #d8dee8 #d8dee8 #1A2026 #d8dee8 #d8dee8
-client.placeholder          #d8dee8 #d8dee8 #1A2026 #d8dee8 #d8dee8
-client.background           #d8dee8
+client.focused              #00ff2a #d8dee8 #1A2026 #00ff2a #adffaf
+client.focused_inactive     #1A2026 #1A2026 #1A2026 #1A2026 #1A2026
+client.unfocused            #1A2026 #1A2026 #1A2026 #1A2026 #1A2026
+client.urgent               #1A2026 #1A2026 #1A2026 #1A2026 #1A2026
+client.placeholder          #1A2026 #1A2026 #1A2026 #1A2026 #1A2026
+client.background           #1A2026
 
 # Set shut down, restart and locking features
 bindsym $super+0 mode "$mode_system"
