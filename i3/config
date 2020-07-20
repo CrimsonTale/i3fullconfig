@@ -127,9 +127,9 @@ bar {
 
         # colour of border, background, and text
         focused_workspace       #d8dee8 #00ff2a #1A2026
-        active_workspace        #d8dee8 #d8dee8 #1A2026
-        inactive_workspace      #d8dee8 #d8dee8 #1A2026
-        urgent_workspacei       #d8dee8 #ebcb8b #2f343f
+        active_workspace        #d8dee8 #1A2026 #1A2026
+        inactive_workspace      #d8dee8 #1A2026 #1A2026
+        urgent_workspacei       #d8dee8 #1A2026 #2f343f
     }
         status_command i3status
 }
@@ -147,3 +147,19 @@ client.urgent               #d8dee8 #d8dee8 #1A2026 #d8dee8 #d8dee8
 client.placeholder          #d8dee8 #d8dee8 #1A2026 #d8dee8 #d8dee8
 client.background           #d8dee8
 
+# Set shut down, restart and locking features
+bindsym $super+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
