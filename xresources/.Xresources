@@ -29,7 +29,7 @@ URxvt.font:				xft:MesloLGS NF:regular:size=11:antialias=true:hinting=true
 ! Xft Font Configuration
 ! ------------------------------------------------------------------------------
 
-Xft.autohint: 0
+Xft.autohint: 1
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintslight
 Xft.hinting: 1
@@ -51,12 +51,13 @@ URxvt*iso14755:			false
 URxvt*urgentOnBell:		true
 
 ! appearance
-URxvt*depth:			24
+URxvt.depth: 32
 URxvt*scrollBar:		false
 URxvt*scrollBar_right:	false
 URxvt*internalBorder:	24
 URxvt*externalBorder:	0
 URxvt.geometry:			84x22
+
 
 ! perl extensions
 URxvt.perl-ext-common:	default,clipboard,url-select,keyboard-select
