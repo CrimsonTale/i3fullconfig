@@ -5,7 +5,7 @@ set $super Mod4
 set $alt Mod1
 
 # set font
-font pango: MesloLGS NF 10
+font pango: InconsolataGo Nerd Font 11
 
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
@@ -13,19 +13,32 @@ floating_modifier $super
 #autostart
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xsettingsd &
-exec --no-startup-id picom --experimental-backends -b
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id polychromatic-controller
-
+exec --no-startup-id picom --experimental-backends -b
+exec --no-startup-id clipit
+#exec --no-startup-id xdman
 
 #Needed for i3-gaps
 #hide_edge_borders both
-for_window [class="^.*"] border pixel 2
-gaps inner 12 
-gaps outer 5
+for_window [class="^.*"] border pixel 5
+
+gaps inner 10
+gaps outer 4
 
 bindsym $super+z		gaps outer current plus 5
 bindsym $super+Shift+z	gaps outer current minus 5
+
+set $mode_gaps Toggle gaps: (1) on (2) off
+bindsym $alt+z mode "$mode_gaps"
+mode "$mode_gaps" {
+    bindsym 1 mode "default", gaps inner all set 10, gaps outer all set 4
+    bindsym 2 mode "default", gaps inner all set 1, gaps outer all set 1
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
+
 
 
 # start a terminal
@@ -143,7 +156,7 @@ for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 
 # colour of border, background, text, indicator, and child_border
-client.focused              #00ff2a #d8dee8 #1A2026 #00ff2a #adffaf
+client.focused              #00ff2a #d8dee8 #1A2026 #00ff2a #00ff2a
 client.focused_inactive     #1A2026 #1A2026 #1A2026 #1A2026 #1A2026
 client.unfocused            #1A2026 #1A2026 #1A2026 #1A2026 #1A2026
 client.urgent               #1A2026 #1A2026 #1A2026 #1A2026 #1A2026

@@ -24,7 +24,7 @@
 ! Font configuration
 ! ------------------------------------------------------------------------------
 
-URxvt.font:				xft:MesloLGS NF:regular:size=11:antialias=true:hinting=true
+URxvt.font:				xft:DejaVuSansMono Nerd Font Mono:bold:size=11
 ! ------------------------------------------------------------------------------
 ! Xft Font Configuration
 ! ------------------------------------------------------------------------------
@@ -104,3 +104,6 @@ dmenu.selforeground:	    #1A2026
 dmenu.background:	        #2e3440
 dmenu.selbackground:	    #bf616a
 dmenu.foreground:	        #1A2026
+
+Xcursor.theme: Breeze-ContrastLH
+Xcursor.size: 32
