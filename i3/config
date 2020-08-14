@@ -13,17 +13,17 @@ floating_modifier $super
 #autostart
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xsettingsd &
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id picom --experimental-backends -b
+exec --no-startup-id wal -R
 exec --no-startup-id clipit
-#exec --no-startup-id xdman
+exec --no-startup-id redshift-gtk
+exec --no-startup-id picom --experimental-backends -b
 
 #Needed for i3-gaps
 #hide_edge_borders both
 for_window [class="^.*"] border pixel 5
 
 gaps inner 10
-gaps outer 4
+gaps outer 10
 
 bindsym $super+z		gaps outer current plus 5
 bindsym $super+Shift+z	gaps outer current minus 5
@@ -37,21 +37,16 @@ mode "$mode_gaps" {
     bindsym Escape mode "default"
 }
 
-
-
-
-
 # start a terminal
 bindsym $super+Return exec i3-sensible-terminal
 
-# start dmenu (a program launcher)
-bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=10'"
+# start rofi (a program launcher)
 bindsym $super+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 10'
 
 # common apps keybinds
 bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
-bindsym $super+l exec i3lock -i ~/Desktop/Wallpapers/face.jpg
-bindsym $super+w exec firefox-nightly
+bindsym $super+l exec i3lock
+bindsym $super+w exec vivaldi-snapshot
 bindsym $super+e exec thunar
 
 
@@ -135,19 +130,21 @@ mode "resize" {
 bindsym $super+r mode "resize"
 
 # panel
-bar {
+bar {	
+		position top
+		
         colors {
         background #1A2026
         statusline #1A2026
-        separator #00ff2a
+        separator #00ffff
 
         # colour of border, background, and text
-        focused_workspace       #d8dee8 #00ff2a #1A2026
-        active_workspace        #d8dee8 #00ff2a #1A2026
+        focused_workspace       #d8dee8 #00ffff #1A2026
+        active_workspace        #d8dee8 #00ffff #1A2026
         inactive_workspace      #d8dee8 #d8dee8 #1A2026
         urgent_workspacei       #d8dee8 #1A2026 #2f343f
     }
-        status_command i3status
+       status_command i3status
 }
 
 # window rules, you can find the window class using xprop
@@ -156,12 +153,20 @@ for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 
 # colour of border, background, text, indicator, and child_border
-client.focused              #00ff2a #d8dee8 #1A2026 #00ff2a #00ff2a
-client.focused_inactive     #1A2026 #1A2026 #1A2026 #1A2026 #1A2026
-client.unfocused            #1A2026 #1A2026 #1A2026 #1A2026 #1A2026
-client.urgent               #1A2026 #1A2026 #1A2026 #1A2026 #1A2026
-client.placeholder          #1A2026 #1A2026 #1A2026 #1A2026 #1A2026
-client.background           #1A2026 
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $fg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
+
+# PROTIP: You can also dynamically set dmenu's colors this way:
+bindsym $super+Shift+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
 
 # Set shut down, restart and locking features
 bindsym $super+0 mode "$mode_system"

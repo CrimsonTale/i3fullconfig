@@ -58,7 +58,6 @@ URxvt*internalBorder:	24
 URxvt*externalBorder:	0
 URxvt.geometry:			84x22
 
-
 ! perl extensions
 URxvt.perl-ext-common:	default,clipboard,url-select,keyboard-select
 
@@ -91,7 +90,7 @@ URxvt.keysym.Control-Left:	\033[1;5D
 
 rofi.color-enabled: true
 rofi.color-window: #1A2026, #1A2026, #1A2026
-rofi.color-normal: #1A2026, #d8dee9, #1A2026, #1A2026, #00ff2a
+rofi.color-normal: #1A2026, #d8dee9, #1A2026, #1A2026, #008cff
 rofi.color-active: #1A2026, #b48ead, #1A2026, #1A2026, #93e5cc
 rofi.color-urgent: #1A2026, #ebcb8b, #1A2026, #1A2026, #ebcb8b
 rofi.modi: run,drun,window
